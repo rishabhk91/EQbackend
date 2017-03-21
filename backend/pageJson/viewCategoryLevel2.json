@@ -1,0 +1,67 @@
+{
+    "title": "CategoryLevel2",
+    "description": "List of CategoryLevel2s",
+    "pageType": "view",
+    "sendIdWithCreate": true,
+    "urlFields": ["_id"],
+    "fields": [{
+        "name": "Name",
+        "isSort": "",
+        "tableRef": "name"
+    }, {
+        "name": "Description",
+        "isSort": "",
+        "tableRef": "description"
+    },
+    {
+        "name": "Category",
+        "fieldToBeShown":"name",
+        "type":"fkListView",
+        "isSort": "",
+        "tableRef": "category"
+    },
+     {
+        "name": "ImageThumb",
+        "type":"image",
+        "isSort": "",
+        "tableRef": "imageThumb"
+    },
+     {
+        "name": "price",
+        "isSort": "",
+        "tableRef": "price"
+    }],
+    "action": [{
+        "name": "edit",
+        "icon": "fa-pencil",
+        "buttonClass": "btn-primary",
+        "type": "page",
+        "action": "editCategoryLevel2",
+        "fieldsToSend": {
+            "_id": "_id"
+        }
+    }, {
+        "name": "delete",
+        "icon": "fa-trash",
+        "buttonClass": "btn-danger",
+        "type": "apiCallConfirm",
+        "title": "Delete CategoryLevel2",
+        "content": "Are you sure you want to delete CategoryLevel2?",
+        "api": "CategoryLevel2/delete",
+        "fieldsToSend": {
+            "name": "_id",
+            "value": "_id"
+        }
+    }],
+    "button": [ {
+        "name": "Create",
+        "icon": "plus",
+        "class": "btn-success",
+        "type": "page",
+        "action": "createCategoryLevel2"
+    }],
+    "apiCall": {
+        "url": "CategoryLevel2/search",
+        "params": "_id"
+    }
+}

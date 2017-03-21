@@ -1,0 +1,322 @@
+<div class="checkout">
+    <div>
+        <img src="frontend/img/banner/checkout.jpg" alt="" class="img-responsive">
+    </div>
+    <div class="page-head1">
+        <div class="container">
+            <div class="tab-head text-center">
+                <ul ng-init="view='step1'">
+                    <li ng-click="view='step1'">
+                        <a href="">step1</a>
+                    </li>
+                    <li ng-click="view='step2'">
+                        <a href="">step2</a>
+                    </li>
+                    <li ng-click="view='step3'">
+                        <a href="">step3</a>
+                    </li>
+                    <li ng-click="view='step4'">
+                        <a href="">step4</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="profile" ng-if="view=='step1'">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="login-form minheight">
+                            <div class="row marg0">
+                                <div class="col-md-3">
+                                    <h3 class="head-step1 temp-head">login</h3>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="checkout-login">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Email Address">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Password">
+                                        </div>
+                                    </div>
+                                    <div class="login-forgot">
+                                        <div class="login__btn display-inblock">
+                                            <button class="btn btn-default btn-green text-uppercase">Log In</button>
+                                        </div>
+                                        <div class="display-inblock forgot-passwd">
+                                            <a href="">Forgot Password?</a>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <p class="or__line text-center">or</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <a href=" " class="btn btn-block social-btn facebook">
+                                                    <span class="facebook"><i class="fa fa-facebook " aria-hidden="true"></i></span>Log
+                                                    In with Facebook
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <a href=" " class="btn btn-block social-btn twitter">
+                                                    <span class="twitter"><i class="fa fa-twitter " aria-hidden="true"></i></span>Log
+                                                    In with Twitter
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <a href=" " class="btn btn-block social-btn google">
+                                                    <span class="google"><i class="fa fa-google-plus " aria-hidden="true"></i></span>Log
+                                                    In with Google+
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="login-form minheight">
+                            <div class="row marg0">
+                                <div class="col-md-3">
+                                    <h3 class="head-step1 text-right">sign up</h3>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="checkout-signup">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="First Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Last Name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Email Address">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control" placeholder="Password">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control" placeholder="Confirm Password">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Contact US">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="login-forgot">
+                                        <div class="terms-privacy">
+                                            <div class="checkbox-custom">
+                                                <!--<div class="custom__check"></div>-->
+                                                <input type="checkbox" id="option1" value="">
+                                                <label for="option1"><span></span>I Agree With The Term &amp; Condition And Privacy Policy</label>
+                                            </div>
+                                        </div>
+                                        <div class="login__btn">
+                                            <button class="btn btn-default btn-green text-uppercase">sign up</button>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p class="signup-or__line text-center">or</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <a href=" " class="btn btn-block social-btn facebook">
+                                                    <span class="facebook"><i class="fa fa-facebook " aria-hidden="true"></i></span>Log
+                                                    In with Facebook
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <a href=" " class="btn btn-block social-btn twitter">
+                                                    <span class="twitter"><i class="fa fa-twitter " aria-hidden="true"></i></span>Log
+                                                    In with Twitter
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <a href=" " class="btn btn-block social-btn google">
+                                                    <span class="google"><i class="fa fa-google-plus " aria-hidden="true"></i></span>Log
+                                                    In with Google+
+                                                </a>
+                                                <div class="text-center already-register">
+                                                    <p classs="marg0">Already Registered? Log in</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="package" ng-if="view=='step2'">
+                <table class="table mycart-table">
+                    <thead>
+                        <tr>
+                            <th>Serial No</th>
+                            <th>Particulars</th>
+                            <th>Quantity</th>
+                            <th>Amount</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="cart in myCart">
+                            <td>{{cart.serial}}</td>
+                            <td>
+                                <div class="text-left">
+                                    <div class="table__img display-inblock">
+                                        <img src="{{cart.image}}" alt="" class="img-responsive">
+                                    </div>
+                                    <div class="table__text display-inblock">
+                                        <span>{{cart.particulars}}</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span>01</span>
+                            </td>
+                            <td><span>{{cart.amount}}</span></td>
+                            <td><span>{{cart.total}}</span></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6"><span>Subtotal: $170.98</span></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="row">
+                    <div class="col-md-5 pull-right">
+                        <div class="row">
+                            <div class="col-md-6 pull-right">
+                                <button class="btn btn-default btn-block btn-green">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile" ng-if="view=='step3'">
+                <div class="step3-section">
+                    <div class="display-inblock">
+                        <p class="input-headings">
+                            your<br> details
+                        </p>
+                    </div>
+                    <div class="display-inblock">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="firstname" placeholder="First Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="lastname" placeholder="Last Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control" id="contact" placeholder="Contact Number">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="email" placeholder="Enter email">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="step3-section">
+                    <div class="display-inblock">
+                        <p class="input-headings">
+                            billing<br>Address
+                        </p>
+                    </div>
+                    <div class="display-inblock">
+                        <form class="form-inline billing-address">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="line1" placeholder="Line1">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="line2" placeholder="Line2">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="line3" placeholder="Line3">
+                            </div>
+                        </form>
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="firstname" placeholder="City">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="lastname" placeholder="Pincode">
+                            </div>
+                            <div class="form-group">
+                                <!--<input type="number" class="form-control" id="contact" placeholder="State">-->
+                                <select class="form-control state__width" id="state">
+                                    <option value="" selected disabled>State</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="country" placeholder="Country">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="step3-section">
+                    <div class="display-inblock">
+                        <p class="input-headings">
+                            payment<br> process
+                        </p>
+                    </div>
+                    <div class="display-inblock">
+                        <form class="payment-buttons">
+                            <label class="radio-inline">
+                                <input type="radio" name="optradio">Credit Card
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="optradio">Debit Card
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="optradio">Net Banking
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" login__btn col-md-2 col-md-push-5">
+                        <button class="btn btn-default btn-green btn-block text-uppercase">continue</button>
+                    </div>
+                </div>
+            </div>
+            <div class="package" ng-if="view=='step4'">
+            </div>
+        </div>
+    </div>
+</div>

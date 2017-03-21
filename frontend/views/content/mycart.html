@@ -1,0 +1,72 @@
+<div>
+    <div>
+        <img src="frontend/img/banner/mycart.png" alt="" class="img-responsive">
+    </div>
+    <div class="page-head1">
+        <div class="container">
+            <table class="table mycart-table">
+                <thead>
+                    <tr>
+                        <th>Serial No</th>
+                        <th>Particulars</th>
+                        <th>Quantity</th>
+                        <th>Amount</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="cart in myCart">
+                        <td>{{cart.serial}}</td>
+                        <td>
+                            <div class="text-left">
+                                <div class="table__img display-inblock">
+                                    <img src="{{cart.image}}" alt="" class="img-responsive">
+                                </div>
+                                <div class="table__text display-inblock">
+                                    <span>{{cart.particulars}}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <i class="fa fa-minus display-inblock square__bg" aria-hidden="true"></i>
+                            <div class="display-inblock">
+                                <form>
+                                    <div class="form-group marg0">
+                                        <input type="text" class="form-control quantity__input">
+                                    </div>
+                                </form>
+                            </div>
+                            <i class="fa fa-plus display-inblock square__bg" aria-hidden="true"></i>
+                        </td>
+                        <td><span>{{cart.amount}}</span></td>
+                        <td><span>{{cart.total}}</span></td>
+                        <td>
+                            <i class="fa fa-trash-o display-inblock" aria-hidden="true"></i>
+                            <div class="display-inblock">
+                                Remove
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6"><span>Subtotal: $170.98</span></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="row">
+                <div class="col-md-5 pull-right">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn btn-default btn-block btn-green text-uppercase">Continue Test</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-default btn-block btn-green text-uppercase">Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

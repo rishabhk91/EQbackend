@@ -1,0 +1,66 @@
+{
+    "title": "ProductForm",
+    "description": "List of ProductForms",
+    "pageType": "view",
+    "sendIdWithCreate": true,
+    "urlFields": ["_id"],
+    "fields": [{
+        "name": "Name",
+        "isSort": "",
+        "tableRef": "name"
+    }, {
+        "name": "description",
+        "isSort": "",
+        "tableRef": "description"
+    },
+     {
+        "name": "CategoryLevel3",
+        "fieldToBeShown":"name",
+        "type":"fkListView",
+        "isSort": "",
+        "tableRef": "categoryLevel3"
+    },
+     {
+        "name": "image",
+        "type":"image",
+        "isSort": "",
+        "tableRef": "image"
+    },  {
+        "name": "price",
+        "isSort": "",
+        "tableRef": "price"
+    }],
+    "action": [{
+        "name": "edit",
+        "icon": "fa-pencil",
+        "buttonClass": "btn-primary",
+        "type": "page",
+        "action": "editProductForm",
+        "fieldsToSend": {
+            "_id": "_id"
+        }
+    }, {
+        "name": "delete",
+        "icon": "fa-trash",
+        "buttonClass": "btn-danger",
+        "type": "apiCallConfirm",
+        "title": "Delete ProductForm",
+        "content": "Are you sure you want to delete ProductForm?",
+        "api": "ProductForm/delete",
+        "fieldsToSend": {
+            "name": "_id",
+            "value": "_id"
+        }
+    }],
+    "button": [{
+        "name": "Create",
+        "icon": "plus",
+        "class": "btn-success",
+        "type": "page",
+        "action": "createProductForm"
+    }],
+    "apiCall": {
+        "url": "ProductForm/search",
+        "params": "_id"
+    }
+}

@@ -1,0 +1,15 @@
+<ul class="nav navbar-nav custom-nav">
+  <li ng-repeat="menu in navigation" class="{{menu.classis}}">
+    <a class="space__line" ui-sref="category({categoryUrlSlug: menu.myslug})">{{menu.name}}</a>
+    <a href="{{menu.link}}" ng-if="menu.link">{{menu.name}}</a>
+    <ul class="dropdown-menu" ng-if="menu.subnav!='';">
+      <li ng-repeat="submenu in menu.subnav">
+        <a ui-serf="{{submenu.anchor}}" ng-if="submenu.anchor">{{submenu.name}}</a>
+        <a herf="{{submenu.link}}" ng-if="submenu.link">{{submenu.name}}</a>
+      </li>
+    </ul>
+  </li>
+  <li class="pull-right cart-img">
+    <img src="frontend/img/icons/cart.png" alt="" class="img-responsive">
+  </li>
+</ul>

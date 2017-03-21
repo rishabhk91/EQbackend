@@ -1,0 +1,176 @@
+<!--<div class="container">
+
+    <flex-slider flex-slide="s in mySlides" prev-text="" next-text="">
+        <li>
+            <img ng-src="{{s}}" class="img-full">
+        </li>
+    </flex-slider>
+
+    <swiper autoplay="5000" effect="slide" slides-per-view="1" loop="true">
+        <slides>
+            <slide ng-repeat="s in mySlides">
+                <img ng-src="{{s}}" class="img-full" noloading="true">
+            </slide>
+        </slides>
+        <prev></prev>
+        <next></next>
+        <pagination></pagination>
+    </swiper>
+
+    <div class="row">
+        <div class="col-md-2" ng-repeat="s in mySlides">
+            <a ng-href="{{s}}" rel="gal" fancybox>
+                <img ng-src="{{s}}" class="img-full">
+            </a>
+        </div>
+        <div class="col-md-2">
+            <a class="various fancybox.iframe" href="http://www.youtube.com/embed/L9szn1QQfas?autoplay=1" fancybox><img ng-src="http://img.youtube.com/vi/L9szn1QQfas/maxresdefault.jpg" class="img-full"></a>
+        </div>
+    </div>
+
+</div>-->
+<section>
+	<div class="homeslider">
+		<flex-slider flex-slide="s in mySlides track by $index" prev-text="" next-text="">
+			<li>
+				<img ng-src="{{s}}" class="img-full">
+			</li>
+		</flex-slider>
+		<div class="slider-content">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates asperiores totam ab ea sint natus aspernatur sunt atque
+				deleniti porro illo facilis repellendus numquam, earum dignissimos id doloremque quo. Molestiae.
+			</p>
+			<div class="row">
+				<div class=" login__btn col-md-3">
+					<button class="btn btn-default btn-green btn-block text-uppercase">know more</button>
+				</div>
+			</div>
+		</div>
+		<div class="btnblock">
+			<div class="btnblock__btn">
+				<div class="img-pulse">
+					<img src="frontend/img/icons/pulse-left.png" alt="" class="img-responsive">
+				</div>
+				<div class="btntest">
+					<button class="btn btn-default btn--testcolor">
+						start your free test here
+					</button>
+				</div>
+				<div class="img-pulse">
+					<img src="frontend/img/icons/pulse-right.png" alt="" class="img-responsive">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="video">
+		<div class="bar-top">
+			<img src="frontend/img/banner/rect-bar-left.png" alt="" class="img-responsive">
+		</div>
+		<div class="bar-bottom">
+			<img src="frontend/img/banner/rect-bar-right.png" alt="" class="img-responsive">
+		</div>
+		<div class="bg-play">
+			<img src="frontend/img/banner/bg-play.png" alt="" class="img-responsive">
+			<div class="video__overlay">
+			</div>
+		</div>
+		<div class="video__btn">
+			<h2><span>Lorem </span>Ipsium</h2>
+			<img src="frontend/img/icons/play.png" alt="" class="img-responsive">
+		</div>
+	</div>
+</section>
+<section class="bg-rect">
+	<div class="container">
+		<div class="content-sec white-line">
+			<div class="margin--bottom">
+				<h1 class="content__head">About Us</h1>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div>
+						<p class="text-justify">
+							{{category.results}}	</p>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div>
+						<p class="text-justify">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quasi atque perferendis tempora magnam soluta odit minus
+							ad error. Iusto tenetur consectetur, repellat voluptatem vitae suscipit atque voluptas delectus magni. Lorem ipsum
+							dolor sit amet, consectetur adipisicing elit. Tempore quasi atque perferendis tempora magnam soluta odit minus ad
+							error. Iusto tenetur consectetur, repellat voluptatem vitae suscipit atque voluptas delectus magni.
+						</p>
+					</div>
+					<div class="pull-right">
+						<button class="btn btn-default btn-green text-uppercase">know more</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content-sec">
+			<div class="margin--bottom">
+				<h1 class="content__head">Testimonials</h1>
+			</div>
+			<div class="text-center">
+				<p class="marg0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum fuga adipisci nam harum a voluptates porro ad quaerat
+					molestiae
+				</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+			</div>
+			<div class="bg-lightgreen">
+				<div class="row marg0">
+					<div class="col-md-6 padd0">
+						<div class="grid__img">
+							<img src="frontend/img/banner/img-1.jpg" alt="" class="img-respponsive">
+						</div>
+					</div>
+					<div class="col-md-6 padd0">
+						<div class="gird__vertcenter">
+							<h3 class="text-uppercase text-center">peter logman</h3>
+							<p class="text-center bottom__line">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo doloremque facilis velit porro officiis tempora tenetur
+								dolorum repudiandae placeat.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bg-lightgrey">
+				<div class="row marg0">
+					<div class="col-md-3 padd0">
+						<div class="grid__img">
+							<img src="frontend/img/banner/img-2.png" alt="" class="img-respponsive">
+						</div>
+					</div>
+					<div class="col-md-3 padd0">
+						<div class="gird__vertcenter">
+							<h3 class="text-uppercase text-center"> joan martinez </h3>
+							<p class="text-center">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo doloremque facilis velit porro officiis tempora tenetur
+								dolorum repudiandae placeat.
+							</p>
+						</div>
+					</div>
+					<div class="col-md-3 padd0">
+						<div class="grid__img">
+							<img src="frontend/img/banner/img-3.jpg" alt="" class="img-respponsive">
+						</div>
+					</div>
+					<div class="col-md-3 padd0">
+						<div class="gird__vertcenter">
+							<h3 class="text-uppercase text-center"> michael doe </h3>
+							<p class="text-center">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo doloremque facilis velit porro officiis tempora tenetur
+								dolorum repudiandae placeat.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,25 @@
+<div class="banner">
+    <img ng-src="{{categoryLevel2[0][0].category.imageDetailView | uploadpath}}" alt="" class="img-responsive">
+</div>
+<div class="img-section page-head">
+    <div class="container">
+        <div class="row" ng-repeat="categoryL in categoryLevel2">
+            <div class="col-md-6 col-sm-12 col-xs-12 padd0" ng-repeat="category in categoryL">
+                <div class="img-section__img">
+                    <img ng-src="{{category.imageDetailView | uploadpath}}" alt="" class="img-responsive">
+                    <!--<div class="img__overlay"></div>-->
+                </div>
+                <div class="img-section__text">
+                    <!--<h1>Orientation</h1>-->
+                    <!--<img src="frontend/img/icu-orientation/orientation.png" alt="" class="img-responsive">-->
+                    <!--<h2>
+                       {{category.name}}
+                    </h2>-->
+                    <a class="btn btn-default btn-green tmp__btn text-uppercase" ui-sref="categoryl2({categoryUrlSlug: category.category.myslug,categoryl2UrlSlug:category.myslug})">view</a>
+                </div>
+            </div>
+            
+        </div>
+      
+    </div>
+</div>

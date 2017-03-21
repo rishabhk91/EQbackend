@@ -1,0 +1,62 @@
+{
+  "title": "Create Cart",
+  "name": "Cart",
+  "jsonPage": "viewCart",
+  "desciption": "",
+  "pageType": "create",
+  "urlFields": ["Cart"],
+    "fields": [{
+        "name": "Name",
+        "type": "text",
+        "tableRef": "name",
+        "placeholder": "Enter Name",
+        "id": "name",
+        "validation": ["required", "trim", "unique"],
+        "url": ""
+    },
+
+     {
+        "name": "ProductForm",
+        "type": "tags",
+        "tableRef": "productForm",
+        "searchApi": "searchCall",
+        "placeholder": "Enter ProductForm",
+        "id": "ProductForm",
+        "url": "ProductForm/search",
+        "dropDownField": "name",
+        "fieldType": "array",
+        "dropDownType": "multiple",
+        "onView":true
+    },
+     {
+        "name": "User",
+        "type": "selectFromTable",
+        "tableRef": "user",
+        "searchApi": "searchCall",
+        "placeholder": "Enter User",
+        "id": "user",
+        "url": "User/search"
+    }],
+    "action": [{
+        "name": "submit",
+        "action": "submitCart",
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewCart"
+            }
+        }
+    }, {
+        "name": "cancel",
+        "sideMenuRedirect": true,
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewCart"
+            }
+        }
+    }],
+    "apiCall": {
+        "url": "Cart/save"
+    }
+}

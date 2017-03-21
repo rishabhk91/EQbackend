@@ -1,0 +1,81 @@
+{
+    "title": "CategoryLevel3",
+    "description": "List of CategoryLevel3s",
+    "pageType": "view",
+    "sendIdWithCreate": true,
+    "urlFields": ["_id"],
+    "fields": [{
+        "name": "Name",
+        "isSort": "",
+        "tableRef": "name"
+    }, {
+        "name": "Description",
+        "isSort": "",
+        "tableRef": "description"
+    },
+    {
+        "name": "CategoryLevel2",
+        "fieldToBeShown":"name",
+        "type":"fkListView",
+        "isSort": "",
+        "tableRef": "categoryLevel2"
+    },
+     {
+        "name": "imageDetailView",
+         "type":"image",
+        "isSort": "",
+        "tableRef": "imageDetailView"
+    },
+      {
+        "name": "price",
+        "isSort": "",
+        "tableRef": "price"
+    }],
+    "action": [{
+        "name": "edit",
+        "icon": "fa-pencil",
+        "buttonClass": "btn-primary",
+        "type": "page",
+        "action": "editCategoryLevel3",
+        "fieldsToSend": {
+            "_id": "_id"
+        }
+    }, {
+        "name": "delete",
+        "icon": "fa-trash",
+        "buttonClass": "btn-danger",
+        "type": "apiCallConfirm",
+        "title": "Delete CategoryLevel3",
+        "content": "Are you sure you want to delete CategoryLevel3?",
+        "api": "CategoryLevel3/delete",
+        "fieldsToSend": {
+            "name": "_id",
+            "value": "_id"
+        }
+    }],
+    "button": [{
+        "name": "Excel Export",
+        "icon": "print",
+        "class": "btn-danger",
+        "type": "redirect",
+        "action": "CategoryLevel3/generateExcel",
+        "linkType": "admin"
+    }, {
+        "name": "Upload Excel",
+        "icon": "delete",
+        "class": "btn-warning",
+        "type": "redirect",
+        "action": "excel-upload/CategoryLevel3",
+        "linkType": "internal"
+    }, {
+        "name": "Create",
+        "icon": "plus",
+        "class": "btn-success",
+        "type": "page",
+        "action": "createCategoryLevel3"
+    }],
+    "apiCall": {
+        "url": "CategoryLevel3/search",
+        "params": "_id"
+    }
+}

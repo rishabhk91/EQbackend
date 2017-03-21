@@ -1,0 +1,60 @@
+{
+  "title": "Create Category",
+  "name": "Category",
+  "jsonPage": "viewCategory",
+  "desciption": "",
+  "pageType": "create",
+  "urlFields": ["Category"],
+    "fields": [{
+        "name": "Name",
+        "isSort": "",
+        "tableRef": "name"
+    }, {
+        "name": "Description",
+        "isSort": "",
+        "tableRef": "description"
+    }, {
+        "name": "ImageThumb(1500 x 329px)",
+        "type": "image",
+        "tableRef": "imageThumb",
+        "option": "single",
+        "size": "1500 x 329px",
+        "placeholder": "Enter imageThumb",
+        "id": "imageThumb",
+        "validation": ["", "trim", ""],
+        "url": ""
+    },
+    {
+        "name": "imageDetailView(1080 x 1920px)",
+        "type": "image",
+        "tableRef": "imageDetailView",
+        "option": "single",
+        "size": "1080 x 1920px",
+        "placeholder": "Enter imageDetailView",
+        "id": "imageDetailView",
+        "validation": ["", "trim", ""],
+        "url": ""
+    }],
+    "action": [{
+        "name": "submit",
+        "action": "submitCategory",
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewCategory"
+            }
+        }
+    }, {
+        "name": "cancel",
+        "sideMenuRedirect": true,
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewCategory"
+            }
+        }
+    }],
+    "apiCall": {
+        "url": "Category/save"
+    }
+}

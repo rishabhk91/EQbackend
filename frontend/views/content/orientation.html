@@ -1,0 +1,100 @@
+<div class="page-head1">
+    <div class="container">
+        <div class="heading-name text-center">
+            <h1>{{categoryLevel3[0][0].categoryLevel2.name}}</h1>
+        </div>
+        <div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit deleniti dignissimos obcaecati dicta exercitationem
+                incidunt, earum ipsum maxime totam natus cupiditate, laboriosam ullam veniam delectus omnis consequatur optio.
+                Laboriosam, modi.
+            </p>
+        </div>
+    </div>
+    <div>
+        <img src="frontend/img/orientation/ori-banner.jpg" alt="" class="img-responsive">
+    </div>
+    <div class="container">
+        <div class="img-section-head">
+            <p>you can also buy an individual</p>
+            <p>sub-category for $30 only</p>
+        </div>
+        <div class="img-section">
+            <div class="imgSection" ng-repeat="arr in categoryLevel3">
+                <div class="row marg0">
+                    <div class="col-md-6 padd0">
+                        <div class="img-section__img">
+                            <img ng-src="{{arr[0].imageDetailView | uploadpath}}" alt="" class="img-responsive">
+                            <!--<div class="img__overlay"></div>-->
+                        </div>
+                    </div>
+                    <div class="col-md-6 padd0">
+                        <div class="section__head-odd">
+                            <h2>{{arr[0].name}}</h2>
+                            <p>{{arr[0].description}}</p>
+                            <div class="row marg0">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="top-margin">
+                                        <div class="row">
+                                            <div class=" login__btn col-md-6">
+                                                <button class="btn btn-default btn-active-orange btn-block text-uppercase" ng-click="buyNowCategoryL3(arr[0])">Buy For ${{arr[0].price}}</button>
+                                            </div>
+                                            <div class=" login__btn col-md-6">
+                                                <a class="btn btn-default btn-green-viewtest btn-block text-uppercase"  ui-sref="products({categoryl3UrlSlug: arr[0].myslug})">View Test</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row marg0">
+                    <div class="col-md-6 padd0">
+                        <div class="section__head-even">
+                            <h2>{{arr[1].name}}</h2>
+                            <p>{{arr[1].description}}</p>
+                            <div class="row marg0">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="top-margin">
+                                        <div class="row">
+                                            <div class=" login__btn col-md-6">
+                                                <button class="btn btn-default btn-active-orange btn-block text-uppercase" ng-click="buyNowCategoryL3(arr[1])">Buy For ${{arr[1].price}}</button>
+                                            </div>
+                                            <div class=" login__btn col-md-6">
+                                                <button class="btn btn-default btn-green-viewtest btn-block text-uppercase" ui-sref="products({categoryl3UrlSlug: arr[1].myslug})">View Test</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 padd0">
+                        <div class="img-section__img">
+                            <img  ng-src="{{arr[1].imageDetailView | uploadpath}}"  alt="" class="img-responsive">
+                            <!--<div class="img__overlay"></div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="img-footer-section">
+            <div>
+                <h1>Switch To:</h1>
+            </div>
+            <div class="img-repeatfooter">
+                <div class="row" ng-repeat="data1 in categoryLvl2">
+                    <!--<pre>{{footarray.thumbnail}}</pre>-->
+                    <div class="col-md-4" ng-repeat="data in data1">
+                        <div class="thumbnail padd0 ">
+                            <img ng-src="{{data.imageDetailView | uploadpath}}" alt=" " class="img-responsive ">
+                            <div class="caption caption-text">
+                                <p>{{data.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+{
+  "title": "Create ProductForm",
+  "name": "ProductForm",
+  "jsonPage": "viewProductForm",
+  "desciption": "",
+  "pageType": "create",
+  "urlFields": ["ProductForm"],
+    "fields": [{
+        "name": "Name",
+        "type": "text",
+        "tableRef": "name",
+        "placeholder": "Enter Name",
+        "id": "name",
+        "validation": ["required", "trim", "unique"],
+        "url": ""
+    }, {
+        "name": "Description",
+        "type": "text",
+        "tableRef": "description",
+        "placeholder": "Enter description",
+        "id": "description",
+        "url": ""
+    }, {
+        "name": "Image(1500 x 329px)",
+        "type": "image",
+        "tableRef": "image",
+        "option": "single",
+        "size": "1500 x 329px",
+        "placeholder": "Enter image",
+        "id": "image",
+        "validation": ["", "trim", ""],
+        "url": ""
+    }, {
+        "name": "Order",
+        "type": "selectFromTable",
+        "tableRef": "order",
+        "searchApi": "searchCall",
+        "placeholder": "Enter Order",
+        "id": "order",
+        "url": "Order/search"
+    }, {
+        "name": "price",
+        "type": "text",
+        "tableRef": "price",
+        "placeholder": "Enter price",
+        "id": "price",
+        "url": ""
+    },
+     {
+        "name": "classMarkFormId",
+        "type": "text",
+        "tableRef": "classMarkFormId",
+        "placeholder": "Enter classMarkFormId",
+        "id": "classMarkFormId",
+        "url": ""
+    },
+     {
+        "name": "CategoryLevel3",
+        "type": "selectFromTable",
+        "tableRef": "categoryLevel3",
+        "searchApi": "searchCall",
+        "placeholder": "Enter CategoryLevel3",
+        "id": "categoryLevel3",
+        "url": "CategoryLevel3/search"
+    }],
+    "action": [{
+        "name": "submit",
+        "action": "submitProductForm",
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewProductForm"
+            }
+        }
+    }, {
+        "name": "cancel",
+        "sideMenuRedirect": true,
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewProductForm"
+            }
+        }
+    }],
+    "apiCall": {
+        "url": "ProductForm/save"
+    }
+}

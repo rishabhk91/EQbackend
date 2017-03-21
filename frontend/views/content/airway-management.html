@@ -1,0 +1,71 @@
+<div class="page-head1 airway-page">
+	<div class="container">
+		<div class="heading-name text-center">
+			<h1>{{minProductPrice.categoryLevel3.name}}</h1>
+		</div>
+		<div>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit deleniti dignissimos obcaecati dicta exercitationem
+				incidunt, earum ipsum maxime totam natus cupiditate, laboriosam ullam veniam delectus omnis consequatur optio. Laboriosam,
+				modi.
+			</p>
+		</div>
+	</div>
+	<div class="bg-banner-text">
+		<img src="frontend/img/airway/airway-banner.jpg" alt="" class="img-responsive">
+		<!--<div class="bg-banner__txt">
+            <div class="display-inblock">
+                <h1 class="text-uppercase">Buy this entire</h1>
+                <h2 class="text-uppercase">sub-category for</h2>
+            </div>
+            <div class="display-inblock">
+                <button class="btn btn-default">Buy Now</button>
+            </div>
+        </div>-->
+	</div>
+	<div class="container">
+		<div class="img-section-head">
+			<p>you can also buy an individual</p>
+			<p>test starting from ${{minProductPrice.price}}</p>
+		</div>
+		<div class="btn-section ">
+			<div class="row " ng-repeat="btnsec in productList ">
+				<div class="col-md-4 padd2 " ng-repeat="btns in btnsec ">
+					<div class="btn btn-block bg-grey btn-relative ">
+						<div class="btn-management block-inline ">
+							<p>{{btns.name}}</p>
+						</div>
+						<div class="block-inline pull-right ">
+							<button class="btn btn-default btn-green text-uppercase " ng-click="buyNowproductForm(btns)">buy for ${{btns.price}}</button>
+						</div>
+						<!--block for overlay on button starts here-->
+						<!--<div class="divoverlay ">
+                            <div class="btn__overlay ">
+                            </div>
+                            <div class="btn__complete ">
+                                completed
+                            </div>
+                        </div>-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="img-footer-section ">
+			<div>
+				<h1>Switch To:</h1>
+			</div>
+			<div class="img-repeatfooter ">
+				<div class="row " ng-repeat="data1 in categoryLvl3 ">
+					<!--<pre>{{footarray.thumbnail}}</pre>-->
+					<div class="col-md-3 " ng-repeat="data in data1 ">
+						<div class="thumbnail padd0 thumbnail-radius ">
+							<img ng-src="{{data.imageDetailView | uploadpath}}"  alt=" " class="img-responsive ">
+							<div class="caption caption-text airway-text ">
+								<p>{{data.name}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
