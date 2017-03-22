@@ -22,20 +22,23 @@ jsonservicemod.service('JsonService', function ($http, TemplateService, $state, 
             TemplateService.changecontent("view");
           }
           break;
-
         case "create":
           {
             TemplateService.changecontent("detail");
           }
           break;
-
-        case "videoedit":
+          case "questionedit":
           {
             console.log("IN components EDIT");
-            TemplateService.changecontent("video");
+            TemplateService.changecontent("question");
           }
           break;
-
+          case "resultedit":
+          {
+            console.log("IN components EDIT");
+            TemplateService.changecontent("result");
+          }
+          break;
         case "edit":
           {
             TemplateService.changecontent("detail");
@@ -106,7 +109,13 @@ jsonservicemod.service('JsonService', function ($http, TemplateService, $state, 
       }
       if (action && action.type == "page") {
         $state.go("page", sendTo);
-      } else if (action && action.type == "apiCallConfirm") {
+      } else if (action && action.type == "questionpage") {
+        console.log("IN bottlespage TYPE");
+        $state.go("bottlespage", sendTo);
+      }else if (action && action.type == "resultpage") {
+        console.log("IN bottlespage TYPE");
+        $state.go("bottlespage", sendTo);
+      }else if (action && action.type == "apiCallConfirm") {
         globalfunction.confDel(function (value2) {
           if (value2) {
             NavigationService.delete(action.api, value, function (data) {

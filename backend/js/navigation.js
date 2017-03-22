@@ -16,6 +16,12 @@ var navigationservice = angular.module('navigationservice', [])
         classis: "active",
         sref: "#!/page/viewQuestion//",
         icon: "phone"
+    },
+    {
+        name: "Answers",
+        classis: "active",
+        sref: "#!/page/viewResults//",
+        icon: "phone"
     }
     ];
 
@@ -85,6 +91,15 @@ var navigationservice = angular.module('navigationservice', [])
 
             });
         },
+
+        boxCall: function (url, formData, callback) {
+                $http.post(adminurl + url, formData).then(function (data) {
+                    data = data.data;
+                    callback(data);
+
+                });
+            },
+            
         searchCall: function (url, formData, i, callback) {
             $http.post(adminurl + url, formData).then(function (data) {
                 data = data.data;

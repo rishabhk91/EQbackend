@@ -141,7 +141,29 @@ var model = {
             data.googleAccessToken = accessToken;
             data.save(function () {});
         });
+    },
+
+    getUser :function(data,callback){
+        console.log("data--", data)
+        User.find().exec(function (err, found) {
+            if (err) {
+                // console.log(err);
+                callback(err, null);
+            } else {
+                if (found) {
+                    
+                    callback(null, found);
+
+                } else {
+                    callback({
+                        message: "Incorrect Credentials!"
+                    }, null);
+                }
+            }
+
+        });
     }
+    
 
 };
 module.exports = _.assign(module.exports, exports, model);

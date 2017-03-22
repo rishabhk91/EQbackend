@@ -556,7 +556,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     //galleryController..........................................................................
 
-    .controller('VideoDetailCtrl', function ($scope, TemplateService, NavigationService, JsonService, $timeout, $state, $stateParams, $uibModal, toastr) {
+    .controller('QuestionDetailCtrl', function ($scope, TemplateService, NavigationService, JsonService, $timeout, $state, $stateParams, $uibModal, toastr) {
         $scope.json = JsonService;
         JsonService.setKeyword($stateParams.keyword);
         $scope.template = TemplateService;
@@ -574,9 +574,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.projectID = {};
 
 
-        $scope.findVideos = function () {
+        $scope.findQuestions = function () {
             console.log('datttttttta1111');
-            NavigationService.apiCall("Videos/findOneVideo", {
+            NavigationService.apiCall("Questions/findOneQuestion", {
                 [$scope.json.json.preApi.params]: $scope.json.keyword._id
             }, function (data) {
                 if (data.value) {
@@ -597,7 +597,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
 
-        $scope.findVideos();
+        $scope.findQuestions();
         // $scope.findState();
         //  START FOR EDIT
         if ($scope.json.json.preApi) {
@@ -616,24 +616,34 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
         //  END FOR EDIT
-        $scope.editBoxCustomGalleryPhotos = function (data, id) {
-
+        $scope.editBoxCustomQuestion = function (data, id) {
+            $scope.editquestion=data;
             console.log("DATADATA", data, id);
             $scope.datainfo = data;
             $scope.newinfo = {};
             $scope.newinfo.id = data._id;
             $scope.newinfo._id = id;
-            console.log("videoGallery", $scope.newinfo);
+            $scope.newinfo.question = data.question;
+            $scope.newinfo.option1 = data.option1;
+            $scope.newinfo.marks1 = data.marks1;
+            $scope.newinfo.option2 = data.option2;
+            $scope.newinfo.marks2 = data.marks2;
+            $scope.newinfo.option3 = data.option3;
+            $scope.newinfo.marks3 = data.marks3;
+            $scope.newinfo.option4= data.option4;
+            $scope.newinfo.marks4 = data.marks4;
+
+            console.log("newinfo", $scope.newinfo);
             $scope.modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
-                templateUrl: '/backend/views/modal/image-edit-gallery.html',
+                templateUrl: '/backend/views/modal/edit-question.html',
                 size: 'lg',
                 scope: $scope,
 
             });
         };
 
-        $scope.editGalleryPhotos = function (data) {
+        $scope.editQuestion = function (data) {
             // console.log("image", image);
             // console.log("id", id);
             // console.log("old", old);
@@ -641,20 +651,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             var data1 = {};
             data1._id = data._id;
             data1.id = data.id;
-            data1.image = data.image;
-            data1.caption = data.caption;
+            data1.question = data.question;
+            data1.option1 = data.option1;
+            data1.marks1 = data.marks1;
+            data1.option2 = data.option2;
+            data1.marks2 = data.marks2;
+            data1.option3 = data.option3;
+            data1.marks3 = data.marks3;
+            data1.option4 = data.option4;
+            data1.marks4 = data.marks4;
 
-            NavigationService.boxCall("Videos/editGalleryPhotos", data1, function (data) {
+            NavigationService.boxCall("Questions/editQuestions", data1, function (data) {
                 $scope.projectData = data.data;
                 $scope.generateField = true;
                 $scope.modalInstance.close();
-                $scope.findVideos();
-                toastr.success("VideoGallery" + " " + "updated" + " successfully.");
+                $scope.findQuestions();
+                toastr.success("Questions Set" + " " + "updated" + " successfully.");
             })
 
         };
 
-        $scope.addBoxGalleryImage = function (data) {
+        $scope.addBoxQuestion = function (data) {
             console.log("DATADATA", data);
 
             $scope.projectinfo = {
@@ -664,7 +681,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             $scope.modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
-                templateUrl: '/backend/views/modal/image-add-gallery.html',
+                templateUrl: '/backend/views/modal/add-question.html',
                 size: 'lg',
                 scope: $scope,
                 tableData: $scope.tableData
@@ -681,29 +698,35 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         var data1 = {};
         var data2 = {};
 
-        data1.videoGallery = [];
-        data2.videoBehindTheScene = [];
+        data1.questionSet = [];
 
-        $scope.saveGalleryPhotos = function (data) {
+        $scope.saveQuestion = function (data) {
 
             data1._id = data._id;
             $scope.newinfo = {};
-            $scope.newinfo.image = data.image;
-            $scope.newinfo.caption = data.caption;
-            data1.videoGallery.push($scope.newinfo);
+            $scope.newinfo.question = data.question;
+            $scope.newinfo.option1 = data.option1;
+            $scope.newinfo.marks1 = data.marks1;
+            $scope.newinfo.option2 = data.option2;
+            $scope.newinfo.marks2 = data.marks2;
+            $scope.newinfo.option3 = data.option3;
+            $scope.newinfo.marks3 = data.marks3;
+            $scope.newinfo.option4 = data.option4;
+            $scope.newinfo.marks4 = data.marks4;
+            data1.questionSet.push($scope.newinfo);
 
 
-            NavigationService.boxCall("Videos/saveGallery", data1, function (data) {
+            NavigationService.boxCall("Questions/saveQuestions", data1, function (data) {
                 $scope.projectData = data.data;
                 $scope.generateField = true;
                 $scope.modalInstance.close();
-                $scope.findVideos();
-                toastr.success("VideoGallery" + " " + "updated" + " successfully.");
+                $scope.findQuestions();
+                toastr.success("Questions" + " " + "updated" + " successfully.");
             })
 
         };
 
-        $scope.removeGalleryPhotos = function (value, value1) {
+        $scope.removeQuestion = function (value, value1) {
 
             var abc = {};
 
@@ -711,11 +734,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             abc.id = value;
             console.log("PROJECT IMAGE afdadfdaTA", abc);
 
-            NavigationService.boxCall("Videos/removeGalleryPhotos", abc, function (data) {
+            NavigationService.boxCall("Questions/removeQuestions", abc, function (data) {
                 $scope.newProjectData = data.data;
                 $scope.generateField = true;
                 // $state.reload();
-                $scope.findVideos();
+                $scope.findQuestions();
 
             })
 
@@ -723,15 +746,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.closeBox = function () {
             $scope.modalInstance.close();
-            $scope.findVideos();
+           $scope.findQuestions();
 
         };
 
 
         $scope.saveData = function (formData) {
             console.log("in save");
-            delete formData.videoBehindTheScene;
-            delete formData.videoGallery;
+            delete formData.questionSet;
             console.log("ABC", formData);
             // console.log("PIC",formData.photos[0].photo);
             NavigationService.apiCall($scope.json.json.apiCall.url, formData, function (data) {
@@ -754,72 +776,144 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
-        //testimonial
+        
 
-        $scope.findBehindTheScene = function () {
+        $scope.closeBox = function () {
+            $scope.modalInstance.close();
+           $scope.findQuestions();
+        };
+
+
+
+
+
+    })
+    .controller('ResultDetailCtrl', function ($scope, TemplateService, NavigationService, JsonService, $timeout, $state, $stateParams, $uibModal, toastr) {
+        $scope.json = JsonService;
+        JsonService.setKeyword($stateParams.keyword);
+        $scope.template = TemplateService;
+        $scope.data = {};
+        $scope.formdata = {};
+        console.log("IN PROJECT controller");
+        console.log("SCOPE JSON", $scope.json);
+        $scope.tableData = {};
+        $scope.stateData = {};
+        $scope.projectDATA = {};
+        $scope.stateName = [];
+        $scope.stateIds = [];
+        $scope.STATE;
+
+        $scope.projectID = {};
+
+
+        $scope.findAnswer = function () {
             console.log('datttttttta1111');
-            NavigationService.apiCall("Videos/findOneBehindTheScene", {
+            NavigationService.apiCall("Results/findOneResults", {
                 [$scope.json.json.preApi.params]: $scope.json.keyword._id
             }, function (data) {
-                // var mydata = _.cloneDeep(data.data);
-                // console.log('mydatatttttttttttt',mydata);
-                $scope.projectDATA = data.data;
-                $scope.tableData = data.data;
-                $scope.generateField = true;
-                console.log("TABLEDATA IS FOUND HERE-->", $scope.tableData);
+                if (data.value) {
+                    // var mydata = _.cloneDeep(data.data);
+                    // console.log('mydatatttttttttttt',mydata);
+                    $scope.projectDATA = data.data;
+                    $scope.tableData = data.data;
+                    $scope.generateField = true;
+                    console.log("TABLEDATA IS FOUND HERE-->", $scope.tableData);
+                } else {
+                    $scope.projectDATA = {};
+                    $scope.tableData = {};
+                    $scope.generateField = true;
+                    console.log("TABLEDATA IS FOUND HERE-->", $scope.tableData);
+                }
             });
         }
 
-        $scope.editBoxCustomBehindTheScene = function (data, id) {
 
+
+        $scope.findAnswer();
+        // $scope.findState();
+        //  START FOR EDIT
+        if ($scope.json.json.preApi) {
+
+            NavigationService.apiCall($scope.json.json.preApi.url, {
+                [$scope.json.json.preApi.params]: $scope.json.keyword._id
+            }, function (data) {
+                $scope.data = data.data;
+                $scope.generateField = true;
+                console.log("DATA IS FOUND HERE-->", $scope.data);
+
+            });
+        } else {
+            $scope.generateField = true;
+        }
+
+
+        //  END FOR EDIT
+        $scope.editBoxCustomQuestion = function (data, id) {
+            $scope.editquestion=data;
             console.log("DATADATA", data, id);
             $scope.datainfo = data;
             $scope.newinfo = {};
             $scope.newinfo.id = data._id;
             $scope.newinfo._id = id;
-            console.log("videoGallery", $scope.newinfo);
+            $scope.newinfo.question = data.question;
+            $scope.newinfo.option1 = data.option1;
+            $scope.newinfo.marks1 = data.marks1;
+            $scope.newinfo.option2 = data.option2;
+            $scope.newinfo.marks2 = data.marks2;
+            $scope.newinfo.option3 = data.option3;
+            $scope.newinfo.marks3 = data.marks3;
+            $scope.newinfo.option4= data.option4;
+            $scope.newinfo.marks4 = data.marks4;
 
-
+            console.log("newinfo", $scope.newinfo);
             $scope.modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
-                templateUrl: '/backend/views/modal/image-edit-behindTheScene.html',
+                templateUrl: '/backend/views/modal/edit-question.html',
                 size: 'lg',
                 scope: $scope,
 
             });
         };
 
-        //testimonial saveedit
+        $scope.editQuestion = function (data) {
+            // console.log("image", image);
+            // console.log("id", id);
+            // console.log("old", old);
 
-        $scope.saveEditBehindTheScene = function (data) {
             var data1 = {};
             data1._id = data._id;
             data1.id = data.id;
-            data1.image = data.image;
-            data1.caption = data.caption;
+            data1.question = data.question;
+            data1.option1 = data.option1;
+            data1.marks1 = data.marks1;
+            data1.option2 = data.option2;
+            data1.marks2 = data.marks2;
+            data1.option3 = data.option3;
+            data1.marks3 = data.marks3;
+            data1.option4 = data.option4;
+            data1.marks4 = data.marks4;
 
-            NavigationService.boxCall("Videos/editBehindTheScene", data1, function (data) {
+            NavigationService.boxCall("Questions/editQuestions", data1, function (data) {
                 $scope.projectData = data.data;
                 $scope.generateField = true;
                 $scope.modalInstance.close();
-                $scope.findVideos();
-                toastr.success(" Testimonial" + " " + "updated" + " successfully.");
+                $scope.findQuestions();
+                toastr.success("Questions Set" + " " + "updated" + " successfully.");
             })
 
         };
 
-        //testimonial all
-
-        $scope.addBoxBehindTheScene = function (data) {
+        $scope.addBoxQuestion = function (data) {
             console.log("DATADATA", data);
-            $scope.status = ["true", "false"];
+
             $scope.projectinfo = {
                 _id: data
             };
+            console.log("projectinfo", $scope.projectinfo);
 
             $scope.modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
-                templateUrl: '/backend/views/modal/image-add-behindTheScene.html',
+                templateUrl: '/backend/views/modal/add-question.html',
                 size: 'lg',
                 scope: $scope,
                 tableData: $scope.tableData
@@ -833,42 +927,50 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $state.go($scope.json.json.action[1].stateName.page, $scope.json.json.action[1].stateName.json);
         };
 
+        var data1 = {};
+        var data2 = {};
 
-        $scope.saveBehindTheScene = function (data) {
-            // console.log("DATA", value);
+        data1.questionSet = [];
 
-            data2._id = data._id;
+        $scope.saveQuestion = function (data) {
+
+            data1._id = data._id;
             $scope.newinfo = {};
-            $scope.newinfo.image = data.image;
-            $scope.newinfo.caption = data.caption;
-            data2.videoBehindTheScene.push($scope.newinfo);
+            $scope.newinfo.question = data.question;
+            $scope.newinfo.option1 = data.option1;
+            $scope.newinfo.marks1 = data.marks1;
+            $scope.newinfo.option2 = data.option2;
+            $scope.newinfo.marks2 = data.marks2;
+            $scope.newinfo.option3 = data.option3;
+            $scope.newinfo.marks3 = data.marks3;
+            $scope.newinfo.option4 = data.option4;
+            $scope.newinfo.marks4 = data.marks4;
+            data1.questionSet.push($scope.newinfo);
 
-            NavigationService.boxCall("Videos/saveBehind", data2, function (data) {
+
+            NavigationService.boxCall("Questions/saveQuestions", data1, function (data) {
                 $scope.projectData = data.data;
                 $scope.generateField = true;
                 $scope.modalInstance.close();
-                $scope.findVideos();
-                toastr.success("VideoGallery" + " " + "updated" + " successfully.");
+                $scope.findQuestions();
+                toastr.success("Questions" + " " + "updated" + " successfully.");
             })
 
         };
 
-        $scope.removeBehindTheScene = function (value, value1) {
+        $scope.removeQuestion = function (value, value1) {
 
             var abc = {};
-            console.log("value = ", value)
+
             abc._id = value1;
             abc.id = value;
-            // abc = value;
-            // abc.project=project;
-            // console.log("PROJECT ",project);
             console.log("PROJECT IMAGE afdadfdaTA", abc);
 
-            NavigationService.boxCall("Videos/removeBehindTheScene", abc, function (data) {
+            NavigationService.boxCall("Questions/removeQuestions", abc, function (data) {
                 $scope.newProjectData = data.data;
                 $scope.generateField = true;
                 // $state.reload();
-                $scope.findVideos();
+                $scope.findQuestions();
 
             })
 
@@ -876,31 +978,45 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.closeBox = function () {
             $scope.modalInstance.close();
-            $scope.findProject();
+           $scope.findQuestions();
+
         };
 
 
-        // $scope.saveData = function (formData) {
-        //         console.log("in save");
-        //         console.log("ABC", formData);
-        //         // console.log("PIC",formData.photos[0].photo);
-        //         NavigationService.apiCall($scope.json.json.apiCall.url, formData, function (data) {
-        //                 if (data.value === true) {
-        //                     $scope.json.json.action[0].stateName.json.keyword = "";
-        //                     $scope.json.json.action[0].stateName.json.page = "";
-        //                     $state.go($scope.json.json.action[0].stateName.page, $scope.json.json.action[0].stateName.json);
-        //                     var messText = "created";
-        //                     if ($scope.json.keyword._id) {
-        //                         messText = "edited";
-        //                     }
-        //                     toastr.success($scope.json.json.name + " " + formData.name + " " + messText + " successfully.");
-        //                 } else {
-        //                     var messText = "creating";
-        //                     if ($scope.json.keyword._id) {
-        //                         messText = "editing";
-        //                     }
-        //                     toastr.error("Failed " + messText + " " + $scope.json.json.name);
-        //                 }
+        $scope.saveData = function (formData) {
+            console.log("in save");
+            delete formData.questionSet;
+            console.log("ABC", formData);
+            // console.log("PIC",formData.photos[0].photo);
+            NavigationService.apiCall($scope.json.json.apiCall.url, formData, function (data) {
+                if (data.value === true) {
+                    $scope.json.json.action[0].stateName.json.keyword = "";
+                    $scope.json.json.action[0].stateName.json.page = "";
+                    $state.go($scope.json.json.action[0].stateName.page, $scope.json.json.action[0].stateName.json);
+                    var messText = "created";
+                    if ($scope.json.keyword._id) {
+                        messText = "edited";
+                    }
+                    toastr.success($scope.json.json.name + " " + formData.name + " " + messText + " successfully.");
+                } else {
+                    var messText = "creating";
+                    if ($scope.json.keyword._id) {
+                        messText = "editing";
+                    }
+                    toastr.error("Failed " + messText + " " + $scope.json.json.name);
+                }
+            });
+        };
+
+        
+
+        $scope.closeBox = function () {
+            $scope.modalInstance.close();
+           $scope.findQuestions();
+        };
+
+
+
 
 
     })

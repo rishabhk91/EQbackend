@@ -12,10 +12,13 @@ var schema = new Schema({
     questionSet: [{
         question: String,
         option1: String,
+        marks1:Number,
         option2: String,
+        marks2:Number,
         option3: String,
+        marks3:Number,
         option4: String,
-        answer: String
+        marks4:Number,
     }]
 });
 
@@ -33,8 +36,8 @@ var model = {
             _id: data._id,
         }, {
             $push: {
-                videoGallery: {
-                    $each: data.videoGallery
+                questionSet: {
+                    $each: data.questionSet
                 }
             }
         }).exec(function (err, found) {
@@ -63,11 +66,18 @@ var model = {
         console.log(data);
         Questions.update({
             '_id': data._id,
-            'videoGallery._id': data.id
+            'questionSet._id': data.id
         }, {
             '$set': {
-                'videoGallery.$.image': data.image,
-                'videoGallery.$.caption': data.caption
+                'questionSet.$.question': data.question,
+                'questionSet.$.option1': data.option1,
+                'questionSet.$.marks1': data.marks1,
+                'questionSet.$.option2': data.option2,
+                'questionSet.$.marks2': data.marks2,
+                'questionSet.$.option3': data.option3,
+                'questionSet.$.marks3': data.marks3,
+                'questionSet.$.option4': data.option4,
+                'questionSet.$.marks4': data.marks4,
             }
         }, function (err, found) {
 
@@ -92,10 +102,10 @@ var model = {
         console.log("DATA", data);
         Questions.update({
             '_id': data._id,
-            'videoGallery._id': data.id
+            'questionSet._id': data.id
         }, {
             '$pull': {
-                videoGallery: {
+                questionSet: {
                     _id: data.id
                 }
             }
@@ -116,10 +126,10 @@ var model = {
         })
     },
 
-    findOneSet: function (data, callback) {
+    findOneQuestion: function (data, callback) {
         Questions.findOne({
             _id: data._id
-        }).deepPopulate("videoGallery").exec(function (err, found) {
+        }).deepPopulate("questionSet").exec(function (err, found) {
 
             if (err) {
 
@@ -138,6 +148,25 @@ var model = {
         })
     },
 
+    getAllQuestionSet: function (data, callback) {
+        Questions.find().deepPopulate("questionSet").exec(function (err, found) {
+
+            if (err) {
+
+                callback(err, null);
+            } else {
+
+                if (found) {
+                    console.log("Found", found);
+                    callback(null, found);
+                } else {
+                    callback(null, {
+                        message: "No Data Found"
+                    });
+                }
+            }
+        })
+    }
 
 };
 module.exports = _.assign(module.exports, exports, model);

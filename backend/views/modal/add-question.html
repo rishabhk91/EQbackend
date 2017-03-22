@@ -1,0 +1,75 @@
+<form name="modalForm" ng-submit="modalOptions.submit()" class="min-hit">
+    <div class="modal-header blue-bg">
+        <div class="pull-right">
+            <a class="btn btn-clear" ng-click="$dismiss()">
+                <i class="ln-cross"></i>
+            </a>
+        </div>
+        <h5 class="modal-title">Add Question</h5>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Question</label>
+                    <input type="text" name="name" placeholder="Enter question" ng-model="projectinfo.question" class="form-control" ng-required="type.required"
+                        ng-disabled="">
+                    <div class="error-msg " ng-show="detailForm[type.tableRef].$invalid &amp;&amp; detailForm[type.tableRef].$touched">Please enter Caption</div>
+                </div>
+                <div class="form-group">
+                    <label>Option 1</label>
+                    <input type="text" name="name" placeholder="Enter option1" ng-model="projectinfo.option1" class="form-control" ng-required="type.required"
+                        ng-disabled="">
+                    <div class="error-msg " ng-show="detailForm[type.tableRef].$invalid &amp;&amp; detailForm[type.tableRef].$touched">Please enter Caption</div>
+                </div>
+                <div class="form-group">
+                    <label>Marks for Option 1</label>
+                    <input type="number" name="name" placeholder="Enter marks" ng-model="projectinfo.marks1" class="form-control" ng-required="type.required"
+                        ng-disabled="">
+                    <div class="error-msg " ng-show="detailForm[type.tableRef].$invalid &amp;&amp; detailForm[type.tableRef].$touched">Please enter Caption</div>
+                </div>
+                <div class="form-group">
+                    <label>Option 2</label>
+                    <input type="text" name="name" placeholder="Enter option2" ng-model="projectinfo.option2" class="form-control" ng-required="type.required"
+                        ng-disabled="">
+                    <div class="error-msg " ng-show="detailForm[type.tableRef].$invalid &amp;&amp; detailForm[type.tableRef].$touched">Please enter Caption</div>
+                </div>
+                <div class="form-group">
+                    <label>Marks for Option 2</label>
+                    <input type="number" name="name" placeholder="Enter marks" ng-model="projectinfo.marks2" class="form-control" ng-required="type.required"
+                        ng-disabled="">
+                    <div class="error-msg " ng-show="detailForm[type.tableRef].$invalid &amp;&amp; detailForm[type.tableRef].$touched">Please enter Caption</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Option 3</label>
+                    <input type="text" name="name" placeholder="Enter option3" ng-model="projectinfo.option3" class="form-control" ng-required="type.required"
+                        ng-disabled="">
+                    <div class="error-msg " ng-show="detailForm[type.tableRef].$invalid &amp;&amp; detailForm[type.tableRef].$touched">Please enter Caption</div>
+                </div>
+                <div class="form-group">
+                    <label>Marks for Option 3</label>
+                    <input type="number" name="name" placeholder="Enter marks" ng-model="projectinfo.marks3" class="form-control" ng-required="type.required"
+                        ng-disabled="">
+                    <div class="error-msg " ng-show="detailForm[type.tableRef].$invalid &amp;&amp; detailForm[type.tableRef].$touched">Please enter Caption</div>
+                </div>
+                <div class="form-group">
+                    <label>Option 4</label>
+                    <input type="text" name="name" placeholder="Enter option4" ng-model="projectinfo.option4" class="form-control" ng-required="type.required"
+                        ng-disabled="">
+                    <div class="error-msg " ng-show="detailForm[type.tableRef].$invalid &amp;&amp; detailForm[type.tableRef].$touched">Please enter option4</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Marks for Option 4</label>
+                    <input type="number" name="name" placeholder="Enter marks" ng-model="projectinfo.marks4" class="form-control" ng-required="type.required"
+                        ng-disabled="">
+                    <div class="error-msg " ng-show="detailForm[type.tableRef].$invalid &amp;&amp; detailForm[type.tableRef].$touched">Please enter Caption</div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary btn-save " type="submit" ng-disabled="modalForm.$invalid" ng-click="saveQuestion(projectinfo)">Save</button>
+                    <button class="btn btn-primary btn-danger" type="submit" ng-click="closeBox()">Cancel</button>
+                </div>
+            </div>
+</form>
+</div>

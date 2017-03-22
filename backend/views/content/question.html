@@ -1,4 +1,4 @@
-<div ng-controller="VideoDetailCtrl">
+<div ng-controller="QuestionDetailCtrl">
     <div class="breadcrumbs">
         <ul>
             <li>
@@ -39,8 +39,8 @@
                                         </div>
                                         <div>
                                             <div>
-                                                <h3> Gallery </h3>
-                                                <a class=" btn btn-primary pull-right ml-10" ng-click="addBoxQuestionSet(json.keyword._id)">Add New</a>
+                                                <h3> Questions </h3>
+                                                <a class=" btn btn-primary pull-right ml-10" ng-click="addBoxQuestion(json.keyword._id)">Add New</a>
                                                 <span style="float:right;width:200px; "><input type="search " class="form-control" placeholder="Search... " ng-model="search.text "> </span>
                                             </div>
                                             <div class="sec">
@@ -59,10 +59,10 @@
                                                                         {{photo.question}}
                                                                     </td>
                                                                     <td>
-                                                                        <a class="btn btn-primary" ng-click="editBoxCustomGalleryPhotos(photo,json.keyword._id)">
+                                                                        <a class="btn btn-primary" ng-click="editBoxCustomQuestion(photo,json.keyword._id)">
                                                                             <i class="fa fa-pencil"></i>
                                                                         </a>
-                                                                        <a class="btn btn-danger" ng-click="removeGalleryPhotos(photo._id,json.keyword._id)">
+                                                                        <a class="btn btn-danger" ng-click="removeQuestion(photo._id,json.keyword._id)">
                                                                             <i class="fa fa-trash"></i>
                                                                         </a>
                                                                     </td>
