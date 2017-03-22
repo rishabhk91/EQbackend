@@ -29,6 +29,13 @@ jsonservicemod.service('JsonService', function ($http, TemplateService, $state, 
           }
           break;
 
+        case "videoedit":
+          {
+            console.log("IN components EDIT");
+            TemplateService.changecontent("video");
+          }
+          break;
+
         case "edit":
           {
             TemplateService.changecontent("detail");

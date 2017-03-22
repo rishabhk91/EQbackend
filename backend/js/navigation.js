@@ -11,83 +11,12 @@ var navigationservice = angular.module('navigationservice', [])
         classis: "active",
         sref: "#!/page/viewUser//",
         icon: "phone"
-    },
-  
-    {
-        name: "Category",
+    },{
+        name: "Question Set",
         classis: "active",
-        sref: "#!/page/viewCategory//",
-        icon: "phone"
-    },
-    {
-        name: "Category L2",
-        classis: "active",
-        sref: "#!/page/viewCategoryLevel2//",
-        icon: "phone"
-    },
-    {
-        name: "Category L3",
-        classis: "active",
-        sref: "#!/page/viewCategoryLevel3//",
-        icon: "phone"
-    },
-     {
-        name: "Products",
-        classis: "active",
-        sref: "#!/page/viewProductForm//",
-        icon: "phone"
-    },
-      {
-        name: "Cart",
-        classis: "active",
-        sref: "#!/page/viewCart//",
-        icon: "phone"
-    },
- {
-        name: "Order",
-        classis: "active",
-        sref: "#!/page/viewOrder//",
-        icon: "phone"
-    },
-    {
-        name: "Enquiry",
-        classis: "active",
-        sref: "#!/page/viewEnquiry//",
-        icon: "phone"
-    },
-    {
-        name: "News Letter",
-        classis: "active",
-        sref: "#!/page/viewNewsLetter//",
-        icon: "phone"
-    },
-   
-    // {
-    //     name: "Pages",
-    //     classis: "active",
-    //     sref: "#!/page/viewPages//",
-    //     icon: "phone"
-    // },
-   
-    {
-        name: "Slider",
-        classis: "active",
-        sref: "#!/page/viewSlider//",
-        icon: "phone"
-    },
-    {
-        name: "Testimonial",
-        classis: "active",
-        sref: "#!/page/viewTestimonial//",
+        sref: "#!/page/viewQuestion//",
         icon: "phone"
     }
-    // ,
-    // {
-    //     name: "User Form",
-    //     classis: "active",
-    //     sref: "#!/page/viewUserForm//",
-    //     icon: "phone"
-    // }
     ];
 
     return {
@@ -188,7 +117,6 @@ var navigationservice = angular.module('navigationservice', [])
             }).then(function (data) {
                 data = data.data;
                 callback(data);
-
             });
 
         },

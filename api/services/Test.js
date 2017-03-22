@@ -1,22 +1,14 @@
 var schema = new Schema({
-    name: {
-        type: String
-    },
-    image: {
+    answer: [{
         type: String,
-    },
-     link: {
-        type: String,
-    },
-     content: {
-        type: String,
-    }
+        required: true
+    }]
 });
 
 schema.plugin(deepPopulate, {});
 schema.plugin(uniqueValidator);
 schema.plugin(timestamps);
-module.exports = mongoose.model('Slider', schema);
+module.exports = mongoose.model('Test', schema);
 
 var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
 var model = {};
