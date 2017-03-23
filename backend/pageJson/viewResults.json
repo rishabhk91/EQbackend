@@ -1,6 +1,6 @@
 {
     "title": "Results",
-    "description": "List of Answered",
+    "description": "List of Test",
     "pageType": "view",
     "sendIdWithCreate": true,
     "urlFields": ["_id"],
@@ -11,7 +11,7 @@
         "tableRef": "user"
     },
     {
-        "name": "Name",
+        "name": "Test Name",
         "isSort": "",
         "tableRef": "testName"
     }

@@ -5,14 +5,8 @@
     "desciption": "",
     "pageType": "resultedit",
     "urlFields": ["Question"],
-    "fields": [{
-        "name": "User Name",
-        "type":"fkListView",
-        "isSort": "",
-        "tableRef": "user"
-    },
-    {
-        "name": "Name",
+    "fields": [ {
+        "name": "Test Name",
         "isSort": "",
         "tableRef": "testName"
     }],

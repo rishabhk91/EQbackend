@@ -927,36 +927,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $state.go($scope.json.json.action[1].stateName.page, $scope.json.json.action[1].stateName.json);
         };
 
-        var data1 = {};
-        var data2 = {};
-
-        data1.questionSet = [];
-
-        $scope.saveQuestion = function (data) {
-
-            data1._id = data._id;
-            $scope.newinfo = {};
-            $scope.newinfo.question = data.question;
-            $scope.newinfo.option1 = data.option1;
-            $scope.newinfo.marks1 = data.marks1;
-            $scope.newinfo.option2 = data.option2;
-            $scope.newinfo.marks2 = data.marks2;
-            $scope.newinfo.option3 = data.option3;
-            $scope.newinfo.marks3 = data.marks3;
-            $scope.newinfo.option4 = data.option4;
-            $scope.newinfo.marks4 = data.marks4;
-            data1.questionSet.push($scope.newinfo);
-
-
-            NavigationService.boxCall("Questions/saveQuestions", data1, function (data) {
-                $scope.projectData = data.data;
-                $scope.generateField = true;
-                $scope.modalInstance.close();
-                $scope.findQuestions();
-                toastr.success("Questions" + " " + "updated" + " successfully.");
-            })
-
-        };
+        
 
         $scope.removeQuestion = function (value, value1) {
 
@@ -981,43 +952,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
            $scope.findQuestions();
 
         };
-
-
-        $scope.saveData = function (formData) {
-            console.log("in save");
-            delete formData.questionSet;
-            console.log("ABC", formData);
-            // console.log("PIC",formData.photos[0].photo);
-            NavigationService.apiCall($scope.json.json.apiCall.url, formData, function (data) {
-                if (data.value === true) {
-                    $scope.json.json.action[0].stateName.json.keyword = "";
-                    $scope.json.json.action[0].stateName.json.page = "";
-                    $state.go($scope.json.json.action[0].stateName.page, $scope.json.json.action[0].stateName.json);
-                    var messText = "created";
-                    if ($scope.json.keyword._id) {
-                        messText = "edited";
-                    }
-                    toastr.success($scope.json.json.name + " " + formData.name + " " + messText + " successfully.");
-                } else {
-                    var messText = "creating";
-                    if ($scope.json.keyword._id) {
-                        messText = "editing";
-                    }
-                    toastr.error("Failed " + messText + " " + $scope.json.json.name);
-                }
-            });
-        };
-
-        
-
-        $scope.closeBox = function () {
-            $scope.modalInstance.close();
-           $scope.findQuestions();
-        };
-
-
-
-
 
     })
 
