@@ -16,7 +16,7 @@
         "stateName": {
             "page": "page",
             "json": {
-                "id": "viewResult"
+                "id": "viewResults"
             }
         }
     }, {
@@ -25,7 +25,7 @@
         "stateName": {
             "page": "page",
             "json": {
-                "id": "viewResult"
+                "id": "viewResults"
             }
         }
     }],
