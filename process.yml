@@ -1,0 +1,5 @@
+apps:
+  - script: "app.js"
+    name: "EQ Backend - 80"
+    watch: false
+    args: "--prod"
