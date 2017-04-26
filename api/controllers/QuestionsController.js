@@ -38,9 +38,21 @@ var controller = {
             })
         }
     },
-    findOneQuestion: function (req, res) {
+    findOneTest: function (req, res) {
         if (req.body) {
-            Questions.findOneQuestion(req.body, res.callback);
+            Questions.findOneTest(req.body, res.callback);
+        } else {
+            res.json({
+                value: false,
+                data: {
+                    message: "Invalid Request"
+                }
+            })
+        }
+    },
+    getAllTest: function (req, res) {
+        if (req.body) {
+            Questions.getAllTest(req.body, res.callback);
         } else {
             res.json({
                 value: false,
@@ -61,7 +73,8 @@ var controller = {
                 }
             })
         }
-    }
+    },
+
 
 
 };

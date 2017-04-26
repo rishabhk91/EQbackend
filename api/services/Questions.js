@@ -12,13 +12,13 @@ var schema = new Schema({
     questionSet: [{
         question: String,
         option1: String,
-        marks1:Number,
+        marks1: Number,
         option2: String,
-        marks2:Number,
+        marks2: Number,
         option3: String,
-        marks3:Number,
+        marks3: Number,
         option4: String,
-        marks4:Number,
+        marks4: Number,
     }]
 });
 
@@ -126,7 +126,7 @@ var model = {
         })
     },
 
-    findOneQuestion: function (data, callback) {
+    findOneTest: function (data, callback) {
         Questions.findOne({
             _id: data._id
         }).deepPopulate("questionSet").exec(function (err, found) {
@@ -148,7 +148,7 @@ var model = {
         })
     },
 
-    getAllQuestionSet: function (data, callback) {
+    getAllTest: function (data, callback) {
         Questions.find().deepPopulate("questionSet").exec(function (err, found) {
 
             if (err) {
@@ -166,7 +166,35 @@ var model = {
                 }
             }
         })
+    },
+
+    getAllQuestionSet: function (data, callback) {
+        console.log("id", data._id);
+        Questions.aggregate([{
+
+                $unwind: {
+                    path: "$questionSet",
+                    preserveNullAndEmptyArrays: true // optional
+                }
+            },
+
+            // Stage 2
+            {
+                $match: {
+                    "_id": ObjectId(data._id)
+                }
+            },
+        ], function (error, data1) {
+            if (error) {
+                callback(error, null);
+            } else {
+                console.log("respo", data1);
+                callback(null, data1);
+            }
+        });
     }
+
+
 
 };
 module.exports = _.assign(module.exports, exports, model);

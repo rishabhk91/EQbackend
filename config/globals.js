@@ -75,7 +75,7 @@ global["Grid"] = require('gridfs-stream');
 global["gfs"] = Grid(mongoose.connections[0].db, mongoose);
 global["http"] = require('http');
 gfs.mongo = mongoose.mongo;
-
+global["ObjectId"] = mongoose.Types.ObjectId;
 //Image Library
 global["stream"] = require('stream');
 global["Jimp"] = require("jimp");
