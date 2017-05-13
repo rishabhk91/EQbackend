@@ -7,7 +7,7 @@ var schema = new Schema({
         type: String
     },
     duration: {
-        type: String
+        type: Number
     },
     questionSet: [{
         question: String,

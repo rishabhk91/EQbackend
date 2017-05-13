@@ -18,8 +18,9 @@
         "isSort": "",
         "tableRef": "totalmarks"
     }, {
-        "name": "Duration",
+        "name": "Duration (in minutes)",
         "isSort": "",
+        "type": "number",
         "tableRef": "duration"
     }],
     "action": [{
