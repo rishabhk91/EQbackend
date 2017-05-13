@@ -367,19 +367,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
         $scope.saveData = function (formData) {
-            
-             _.each($scope.json.json.fields, function(n){
-               if(n.type == "tags" && n.dropDownType == "multiple"){
-                   console.log(formData[n.tableRef]);
-                   $scope.newTags = [];
-                   _.each(formData[n.tableRef], function(m){
-                       $scope.newTags.push(m._id);
-                   })
-                   console.log($scope.newTags);
-                   formData[n.tableRef] = $scope.newTags;
-                   
-               }
-           });
+
+            _.each($scope.json.json.fields, function (n) {
+                if (n.type == "tags" && n.dropDownType == "multiple") {
+                    console.log(formData[n.tableRef]);
+                    $scope.newTags = [];
+                    _.each(formData[n.tableRef], function (m) {
+                        $scope.newTags.push(m._id);
+                    })
+                    console.log($scope.newTags);
+                    formData[n.tableRef] = $scope.newTags;
+
+                }
+            });
 
             NavigationService.apiCall($scope.json.json.apiCall.url, formData, function (data) {
                 if (data.value === true) {
@@ -617,7 +617,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         //  END FOR EDIT
         $scope.editBoxCustomQuestion = function (data, id) {
-            $scope.editquestion=data;
+            $scope.editquestion = data;
             console.log("DATADATA", data, id);
             $scope.datainfo = data;
             $scope.newinfo = {};
@@ -630,7 +630,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.newinfo.marks2 = data.marks2;
             $scope.newinfo.option3 = data.option3;
             $scope.newinfo.marks3 = data.marks3;
-            $scope.newinfo.option4= data.option4;
+            $scope.newinfo.option4 = data.option4;
             $scope.newinfo.marks4 = data.marks4;
 
             console.log("newinfo", $scope.newinfo);
@@ -662,6 +662,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             data1.marks4 = data.marks4;
 
             NavigationService.boxCall("Questions/editQuestions", data1, function (data) {
+                data1 = {};
+                data1.questionSet = [];
                 $scope.projectData = data.data;
                 $scope.generateField = true;
                 $scope.modalInstance.close();
@@ -717,6 +719,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
             NavigationService.boxCall("Questions/saveQuestions", data1, function (data) {
+                alert("hi");
+                data1 = {};
+                data1.questionSet = [];
+                console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
                 $scope.projectData = data.data;
                 $scope.generateField = true;
                 $scope.modalInstance.close();
@@ -746,7 +752,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.closeBox = function () {
             $scope.modalInstance.close();
-           $scope.findQuestions();
+            $scope.findQuestions();
 
         };
 
@@ -776,11 +782,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
-        
+
 
         $scope.closeBox = function () {
             $scope.modalInstance.close();
-           $scope.findQuestions();
+            $scope.findQuestions();
         };
 
 
@@ -788,172 +794,174 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
     })
-    .controller('ResultDetailCtrl', function ($scope, TemplateService, NavigationService, JsonService, $timeout, $state, $stateParams, $uibModal, toastr) {
-        $scope.json = JsonService;
-        JsonService.setKeyword($stateParams.keyword);
-        $scope.template = TemplateService;
-        $scope.data = {};
-        $scope.formdata = {};
-        console.log("IN PROJECT controller");
-        console.log("SCOPE JSON", $scope.json);
-        $scope.tableData = {};
-        $scope.stateData = {};
-        $scope.projectDATA = {};
-        $scope.stateName = [];
-        $scope.stateIds = [];
-        $scope.STATE;
+    // .controller('ResultDetailCtrl', function ($scope, TemplateService, NavigationService, JsonService, $timeout, $state, $stateParams, $uibModal, toastr) {
+    //     $scope.json = JsonService;
+    //     JsonService.setKeyword($stateParams.keyword);
+    //     $scope.template = TemplateService;
+    //     $scope.data = {};
+    //     $scope.formdata = {};
+    //     console.log("IN PROJECT controller");
+    //     console.log("SCOPE JSON", $scope.json);
+    //     $scope.tableData = {};
+    //     $scope.stateData = {};
+    //     $scope.projectDATA = {};
+    //     $scope.stateName = [];
+    //     $scope.stateIds = [];
+    //     $scope.STATE;
 
-        $scope.projectID = {};
-
-
-        $scope.findAnswer = function () {
-            console.log('datttttttta1111');
-            NavigationService.apiCall("Results/findOneResults", {
-                [$scope.json.json.preApi.params]: $scope.json.keyword._id
-            }, function (data) {
-                if (data.value) {
-                    // var mydata = _.cloneDeep(data.data);
-                    // console.log('mydatatttttttttttt',mydata);
-                    $scope.projectDATA = data.data;
-                    $scope.tableData = data.data;
-                    $scope.generateField = true;
-                    console.log("TABLEDATA IS FOUND HERE-->", $scope.tableData);
-                } else {
-                    $scope.projectDATA = {};
-                    $scope.tableData = {};
-                    $scope.generateField = true;
-                    console.log("TABLEDATA IS FOUND HERE-->", $scope.tableData);
-                }
-            });
-        }
+    //     $scope.projectID = {};
 
 
-
-        $scope.findAnswer();
-        // $scope.findState();
-        //  START FOR EDIT
-        if ($scope.json.json.preApi) {
-
-            NavigationService.apiCall($scope.json.json.preApi.url, {
-                [$scope.json.json.preApi.params]: $scope.json.keyword._id
-            }, function (data) {
-                $scope.data = data.data;
-                $scope.generateField = true;
-                console.log("DATA IS FOUND HERE-->", $scope.data);
-
-            });
-        } else {
-            $scope.generateField = true;
-        }
-
-
-        //  END FOR EDIT
-        $scope.editBoxCustomQuestion = function (data, id) {
-            $scope.editquestion=data;
-            console.log("DATADATA", data, id);
-            $scope.datainfo = data;
-            $scope.newinfo = {};
-            $scope.newinfo.id = data._id;
-            $scope.newinfo._id = id;
-            $scope.newinfo.question = data.question;
-            $scope.newinfo.option1 = data.option1;
-            $scope.newinfo.marks1 = data.marks1;
-            $scope.newinfo.option2 = data.option2;
-            $scope.newinfo.marks2 = data.marks2;
-            $scope.newinfo.option3 = data.option3;
-            $scope.newinfo.marks3 = data.marks3;
-            $scope.newinfo.option4= data.option4;
-            $scope.newinfo.marks4 = data.marks4;
-
-            console.log("newinfo", $scope.newinfo);
-            $scope.modalInstance = $uibModal.open({
-                animation: $scope.animationsEnabled,
-                templateUrl: '/backend/views/modal/edit-question.html',
-                size: 'lg',
-                scope: $scope,
-
-            });
-        };
-
-        $scope.editQuestion = function (data) {
-            // console.log("image", image);
-            // console.log("id", id);
-            // console.log("old", old);
-
-            var data1 = {};
-            data1._id = data._id;
-            data1.id = data.id;
-            data1.question = data.question;
-            data1.option1 = data.option1;
-            data1.marks1 = data.marks1;
-            data1.option2 = data.option2;
-            data1.marks2 = data.marks2;
-            data1.option3 = data.option3;
-            data1.marks3 = data.marks3;
-            data1.option4 = data.option4;
-            data1.marks4 = data.marks4;
-
-            NavigationService.boxCall("Questions/editQuestions", data1, function (data) {
-                $scope.projectData = data.data;
-                $scope.generateField = true;
-                $scope.modalInstance.close();
-                $scope.findQuestions();
-                toastr.success("Questions Set" + " " + "updated" + " successfully.");
-            })
-
-        };
-
-        $scope.addBoxQuestion = function (data) {
-            console.log("DATADATA", data);
-
-            $scope.projectinfo = {
-                _id: data
-            };
-            console.log("projectinfo", $scope.projectinfo);
-
-            $scope.modalInstance = $uibModal.open({
-                animation: $scope.animationsEnabled,
-                templateUrl: '/backend/views/modal/add-question.html',
-                size: 'lg',
-                scope: $scope,
-                tableData: $scope.tableData
-            });
-        };
+    //     $scope.findAnswer = function () {
+    //         console.log('datttttttta1111');
+    //         NavigationService.apiCall("Results/findOneResults", {
+    //             [$scope.json.json.preApi.params]: $scope.json.keyword._id
+    //         }, function (data) {
+    //             if (data.value) {
+    //                 // var mydata = _.cloneDeep(data.data);
+    //                 // console.log('mydatatttttttttttt',mydata);
+    //                 $scope.projectDATA = data.data;
+    //                 $scope.tableData = data.data;
+    //                 $scope.generateField = true;
+    //                 console.log("TABLEDATA IS FOUND HERE-->", $scope.tableData);
+    //             } else {
+    //                 $scope.projectDATA = {};
+    //                 $scope.tableData = {};
+    //                 $scope.generateField = true;
+    //                 console.log("TABLEDATA IS FOUND HERE-->", $scope.tableData);
+    //             }
+    //         });
+    //     }
 
 
-        $scope.onCancel = function (sendTo) {
-            $scope.json.json.action[1].stateName.json.keyword = "";
-            $scope.json.json.action[1].stateName.json.page = "";
-            $state.go($scope.json.json.action[1].stateName.page, $scope.json.json.action[1].stateName.json);
-        };
 
-        
+    //     $scope.findAnswer();
+    //     // $scope.findState();
+    //     //  START FOR EDIT
+    //     if ($scope.json.json.preApi) {
 
-        $scope.removeQuestion = function (value, value1) {
+    //         NavigationService.apiCall($scope.json.json.preApi.url, {
+    //             [$scope.json.json.preApi.params]: $scope.json.keyword._id
+    //         }, function (data) {
+    //             $scope.data = data.data;
+    //             $scope.generateField = true;
+    //             console.log("DATA IS FOUND HERE-->", $scope.data);
 
-            var abc = {};
+    //         });
+    //     } else {
+    //         $scope.generateField = true;
+    //     }
 
-            abc._id = value1;
-            abc.id = value;
-            console.log("PROJECT IMAGE afdadfdaTA", abc);
 
-            NavigationService.boxCall("Questions/removeQuestions", abc, function (data) {
-                $scope.newProjectData = data.data;
-                $scope.generateField = true;
-                // $state.reload();
-                $scope.findQuestions();
+    //     //  END FOR EDIT
+    //     $scope.editBoxCustomQuestion = function (data, id) {
+    //         $scope.editquestion = data;
+    //         console.log("DATADATA", data, id);
+    //         $scope.datainfo = data;
+    //         $scope.newinfo = {};
+    //         $scope.newinfo.id = data._id;
+    //         $scope.newinfo._id = id;
+    //         $scope.newinfo.question = data.question;
+    //         $scope.newinfo.option1 = data.option1;
+    //         $scope.newinfo.marks1 = data.marks1;
+    //         $scope.newinfo.option2 = data.option2;
+    //         $scope.newinfo.marks2 = data.marks2;
+    //         $scope.newinfo.option3 = data.option3;
+    //         $scope.newinfo.marks3 = data.marks3;
+    //         $scope.newinfo.option4 = data.option4;
+    //         $scope.newinfo.marks4 = data.marks4;
 
-            })
+    //         console.log("newinfo", $scope.newinfo);
+    //         $scope.modalInstance = $uibModal.open({
+    //             animation: $scope.animationsEnabled,
+    //             templateUrl: '/backend/views/modal/edit-question.html',
+    //             size: 'lg',
+    //             scope: $scope,
 
-        };
+    //         });
+    //     };
 
-        $scope.closeBox = function () {
-            $scope.modalInstance.close();
-           $scope.findQuestions();
+    //     $scope.editQuestion = function (data) {
+    //         // console.log("image", image);
+    //         // console.log("id", id);
+    //         // console.log("old", old);
 
-        };
+    //         var data1 = {};
+    //         data1._id = data._id;
+    //         data1.id = data.id;
+    //         data1.question = data.question;
+    //         data1.option1 = data.option1;
+    //         data1.marks1 = data.marks1;
+    //         data1.option2 = data.option2;
+    //         data1.marks2 = data.marks2;
+    //         data1.option3 = data.option3;
+    //         data1.marks3 = data.marks3;
+    //         data1.option4 = data.option4;
+    //         data1.marks4 = data.marks4;
 
-    })
+    //         NavigationService.boxCall("Questions/editQuestions", data1, function (data) {
+    //             data1 = {};
+    //             data1.questionSet = [];
+    //             $scope.projectData = data.data;
+    //             $scope.generateField = true;
+    //             $scope.modalInstance.close();
+    //             $scope.findQuestions();
+    //             toastr.success("Questions Set" + " " + "updated" + " successfully.");
+    //         })
+
+    //     };
+
+    //     $scope.addBoxQuestion = function (data) {
+    //         console.log("DATADATA", data);
+
+    //         $scope.projectinfo = {
+    //             _id: data
+    //         };
+    //         console.log("projectinfo", $scope.projectinfo);
+
+    //         $scope.modalInstance = $uibModal.open({
+    //             animation: $scope.animationsEnabled,
+    //             templateUrl: '/backend/views/modal/add-question.html',
+    //             size: 'lg',
+    //             scope: $scope,
+    //             tableData: $scope.tableData
+    //         });
+    //     };
+
+
+    //     $scope.onCancel = function (sendTo) {
+    //         $scope.json.json.action[1].stateName.json.keyword = "";
+    //         $scope.json.json.action[1].stateName.json.page = "";
+    //         $state.go($scope.json.json.action[1].stateName.page, $scope.json.json.action[1].stateName.json);
+    //     };
+
+
+
+    //     $scope.removeQuestion = function (value, value1) {
+
+    //         var abc = {};
+
+    //         abc._id = value1;
+    //         abc.id = value;
+    //         console.log("PROJECT IMAGE afdadfdaTA", abc);
+
+    //         NavigationService.boxCall("Questions/removeQuestions", abc, function (data) {
+    //             $scope.newProjectData = data.data;
+    //             $scope.generateField = true;
+    //             // $state.reload();
+    //             $scope.findQuestions();
+
+    //         })
+
+    //     };
+
+    //     $scope.closeBox = function () {
+    //         $scope.modalInstance.close();
+    //         $scope.findQuestions();
+
+    //     };
+
+    // })
 
 
     .controller('LoginCtrl', function ($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {

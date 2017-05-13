@@ -12,13 +12,26 @@ var schema = new Schema({
     questionSet: [{
         question: String,
         option1: String,
-        marks1: Number,
+        marks1: {
+            type: Number,
+            default: 0
+        },
         option2: String,
-        marks2: Number,
+        marks2: {
+            type: Number,
+            default: 0
+        },
         option3: String,
-        marks3: Number,
+        marks3: {
+            type: Number,
+            default: 0
+        },
         option4: String,
-        marks4: Number,
+        marks4: {
+            type: Number,
+            default: 0
+        },
+
     }]
 });
 
@@ -192,6 +205,26 @@ var model = {
                 callback(null, data1);
             }
         });
+    },
+
+    findOneQuestion: function (reqBody, callback) {
+
+        Questions.findOne({
+            _id: reqBody._id
+        }).exec(function (error, found) {
+            if (error || found == undefined) {
+                console.log("Questions >>> findOneQuestion >>>  Questions.findOne >>> error", error);
+                callback(error, null);
+            } else {
+                if (_.isEmpty(found)) {
+                    callback(null, {
+                        message: "No data found"
+                    });
+                } else {
+                    callback(null, found);
+                }
+            }
+        })
     }
 
 

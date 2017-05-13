@@ -75,7 +75,9 @@ var controller = {
         }
     },
 
-
+    findOneQuestion: function (req, res) {
+        Questions.findOneQuestion(req.body, res.callback);
+    }
 
 };
 module.exports = _.assign(module.exports, controller);
